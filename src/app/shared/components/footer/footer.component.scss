@@ -1,0 +1,57 @@
+@import "src/app/styles/mixins";
+
+footer {
+  padding: calculateRem(8px) calculateRem(16px);
+  color: $white;
+  background: $primary--color;
+  margin-top: 2rem;
+  position: sticky;
+  top: 100%;
+}
+
+.footer-container {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  @include screen('phone') {
+    flex-direction: column;
+  }
+}
+
+.footer-section {
+  width: 100%;
+}
+
+.column-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.social-section {
+  display: flex;
+  justify-content: space-between;
+}
+
+.social-links {
+  margin: 0.5rem;
+}
+
+.footerBanner {
+  color: $white;
+  text-decoration: none;
+}
+
+.logo {
+  height: 50px;
+  width: 50px;
+  border-radius: 50%;
+  background: $white;
+}
+
+.left-section {
+  @include screen('phone') {
+    display: flex;
+    justify-content: center;
+  }
+}

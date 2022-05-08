@@ -1,0 +1,31 @@
+<div class="main-heading">
+  <h1>Welcome to yourAngular Auth0 SSR
+    <span>No more SSR Gotchas.</span>
+  </h1>
+</div>
+
+<div class="row center-xs">
+  <a routerLink="/"><img src="assets/images/logo.svg" class="banner"  alt="profile picture"></a>
+  <div class="user-banner">
+    <div *ngIf="authService.user | async as user" class="user-actions">
+      <h2> Welcome {{ user.email }}</h2>
+      <button class="user-action-button" mat-stroked-button color="primary" [routerLink]="['/default-house']"><i class="fas fa-gopuram"></i> Default house</button>
+      <button class="user-action-button" mat-stroked-button color="success" [routerLink]="['/dashboard']"><i class="fas fa-chart-bar"></i> Dashboard</button>
+      <button class="user-action-button" mat-stroked-button color="success" [routerLink]="['/items']"><i class="fas fa-pepper-hot"></i> All items</button>
+      <button class="user-action-button" mat-stroked-button color="success" [routerLink]="['/restock']"><i class="fas fa-shopping-cart"></i> Restock list</button>
+      <button class="user-action-button" mat-stroked-button color="success" [routerLink]="['/note']"><i class="far fa-clipboard"></i> Notes</button>
+      <button class="user-action-button" mat-stroked-button color="warn" (click)="authService.logout()"><i class="fas fa-sign-out-alt"></i> Logout</button>
+    </div>
+
+    <div *ngIf="(authService.isAuthenticated | async) === false" class="user-actions">
+      <h2> Welcome, please login.</h2>
+      <button class="user-action-button" mat-stroked-button color="success" (click)="authService.login()"><i class="fas fa-key"></i> Login</button>
+      <button class="user-action-button" mat-stroked-button color="primary" (click)="authService.signup()"><i class="fas fa-plus"></i> Sign up</button>
+    </div>
+  </div>
+</div>
+
+<div class="col-md-12">
+  <app-heading heading="Solve, everyday problems, easily. Let us remind you what you have and what you need."></app-heading>
+</div>
+

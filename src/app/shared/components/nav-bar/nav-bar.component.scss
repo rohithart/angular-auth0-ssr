@@ -1,0 +1,126 @@
+@import "src/app/styles/mixins";
+
+.nav-left-container {
+  display: flex;
+  justify-content: flex-start;
+  width: 100%;
+
+  @include screen('tablet-landscape') {
+    flex-direction: column;
+  }
+}
+
+.nav-left-containers {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  width: 100%;
+}
+
+.search-bar {
+  width: 200px;
+  margin-left: 1rem;
+
+  @include screen('tablet-landscape') {
+    width: 100%;
+    margin: 0;
+  }
+}
+
+mat-form-field  {
+  width: 100%;
+}
+
+.search-icon {
+  font-size: 1.5rem;
+}
+
+.search-icon :hover {
+  cursor: pointer;
+}
+
+.icon-search {
+  color: $primary--color;
+}
+
+.icon-close {
+  color: $red;
+}
+
+.fill-remaining-space {
+  flex: 1 1 auto;
+}
+
+.header-message {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+
+  a {color:$primary--color;
+  text-decoration: none;
+  }
+  a:visited {color:$primary--color;}
+  a:hover {color:$primary--color;}
+  a:active {color:$primary--color;}
+}
+
+.pic {
+  height: 50px;
+  width: 50px;
+  margin-right: 1rem;
+}
+
+.app-name {
+  font-size: 1.5rem;
+  margin-right: 1rem;
+}
+
+.welcome-message {
+  font-size: 1rem;
+  @include screen('phone') {
+    font-size: 0.75rem;
+  }
+}
+
+
+.nav-bar {
+  color: $primary--color;
+  background: $white;
+  box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
+
+  @include screen('tablet-landscape') {
+    height: 7rem;
+  }
+}
+
+.menu-button:hover, .menu-item:hover {
+  background: $primary--color;
+  color: $white;
+}
+
+.menu-item {
+  color: $primary--color;
+}
+
+.beta{
+  right: 1rem;
+  top: -1.5rem;
+  position: relative;
+  display: inline-block;
+  width: calc(13em / 14);
+  height: 1em;
+
+  .beta-text {
+    position: absolute;
+    color: $red;
+    font-size: 0.75rem;
+    font-weight: bold;
+    animation: blinker 1s linear infinite;
+  }
+}
+
+@keyframes blinker {
+  50% {
+    opacity: 0;
+  }
+}

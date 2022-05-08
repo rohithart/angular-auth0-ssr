@@ -1,0 +1,145 @@
+@import "src/app/styles/mixins";
+
+.floating-banner {
+  z-index: 1000;
+  padding: 1rem;
+  display: flex;
+  justify-content: space-around;
+  background: $white;
+  border: 1px solid $primary--color;
+  border-radius: 6px;;
+  color: $primary--color;
+
+  position:-webkit-sticky;
+  position:sticky;
+  bottom:2rem;
+
+  h2 {
+    margin: 0;
+  }
+
+  .action-button {
+    margin-left: 2rem;
+    @include screen('phone') {
+      margin: 0;
+      margin-bottom: 0.25rem;
+      width: 100%;
+    }
+  }
+
+  @include screen('phone') {
+    flex-direction: column;
+    align-items: center;
+  }
+}
+
+.steps-container {
+  display: flex;
+  flex-direction: column;
+  color: $primary--color;
+  margin: .5rem;
+  padding: 1rem;
+}
+
+.step {
+  padding: 2rem;
+  border-radius: 6px;
+  height: 10rem;
+  background-image: linear-gradient(to right, $primary--color , $blue2);
+  color: $white;
+  margin: 1rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-content: center;
+  box-shadow: rgba(0, 0, 0, 0.3) 0px 19px 38px, rgba(0, 0, 0, 0.22) 0px 15px 12px;
+}
+
+.step2 {
+  @extend .step;
+  background-image: linear-gradient(to right, $blue2, $blue3);
+}
+
+.step3 {
+  @extend .step;
+  background-image: linear-gradient(to right, $blue3, $blue2);
+}
+
+.step4 {
+  @extend .step;
+  background-image: linear-gradient(to right, $blue2, $primary--color);
+}
+
+.step-heading {
+  font-size: 3rem;
+  text-align: center;
+  margin: 0;
+}
+
+.step-detail {
+  font-size: 1.5rem;
+  text-align: center;
+}
+
+.question {
+  text-align: justify;
+}
+
+.highlight {
+  color: $orange;
+}
+
+.main-heading h1 {
+  text-align: center;
+  font-size: 50px;
+  color: $primary--color;
+  letter-spacing: 1px;
+  font-weight: 400;
+}
+
+.main-heading h1 span {
+  margin-top: 5px;
+  font-size: 1.5rem;
+  color: $primary--color;
+  word-spacing: 1px;
+  font-weight: normal;
+  letter-spacing: 2px;
+  font-weight: 500;
+  display: grid;
+  grid-template-columns: 1fr max-content 1fr;
+  grid-template-rows: 27px 0;
+  grid-gap: 20px;
+  align-items: center;
+}
+
+.main-heading h1 span:after,.main-heading h1 span:before {
+  content: " ";
+  display: block;
+  height: 2px;
+  background-color: $primary--color;
+}
+
+.user-banner {
+  display: unset;
+  box-shadow: 5px 10px 8px $grey;
+  border-radius: 6px;
+  position: absolute;
+  right: 0;
+  width: 30rem;
+  margin-right: 2rem;
+  padding-bottom: 2rem;
+
+  @include screen('tablet-portrait') {
+    display: none;
+  }
+}
+
+.user-actions {
+  display: flex;
+  flex-direction: column;
+  color: $primary--color;
+}
+
+.user-action-button {
+  margin: 0 1rem 0.5rem 1rem;
+}

@@ -1,0 +1,63 @@
+@import "colors";
+@import "functions";
+@mixin font-size($size) {
+    font-size: $size;
+    font-size: calculateRem($size);
+}
+
+@mixin push--auto($vertically: false) {
+    @if $vertically {
+        margin: {
+            top: $vertically;
+            bottom: $vertically;
+            left: auto;
+            right: auto;
+        }
+    }
+    @else {
+        margin: {
+            left: auto;
+            right: auto;
+        }
+    }
+}
+
+@mixin font-roboto($size: false, $colour: false, $weight: false, $lh: false) {
+    font-family: 'Roboto', Helvetica, Arial, sans-serif;
+    @if $size {
+        font-size: $size;
+    }
+    @if $colour {
+        color: $colour;
+    }
+    @if $weight {
+        font-weight: $weight;
+    }
+    @if $lh {
+        line-height: $lh;
+    }
+}
+
+$sm: "screen and (max-width : 30rem)";
+$md: "screen and (max-width : 48rem)";
+$lg: "screen and (max-width : 60rem)";
+$xl: "screen and (max-width : 95rem)";
+
+$breakpoints: (
+  'phone': 599px,
+  'tablet-portrait': 600px,
+  'tablet-landscape': 960px,
+  'desktop': 1280px,
+  'big-desktop': 1920px
+) !default;
+
+@mixin screen($breakpoint) {
+  @if map-has-key($breakpoints, $breakpoint) {
+    @media (max-width: map-get($breakpoints, $breakpoint)) {
+      @content;
+    }
+  }
+  @else {
+    @warn "Unfortunately, `#{$breakpoint}` cannot be found. Available breakpoints are: #{map-keys($breakpoints)}."
+  }
+}

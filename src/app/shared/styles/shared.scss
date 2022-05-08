@@ -1,0 +1,24 @@
+@import "src/app/styles/mixins";
+
+.star {
+  color: $gold;
+  position: absolute;
+  right: 0;
+  top: 0;
+  font-size: 1.5rem;
+  padding: .5rem;
+  filter: drop-shadow(2px 1px 1px $shadow);
+
+  :hover {
+    cursor: pointer;
+  }
+}
+
+.star-not-selected {
+  @extend .star;
+  color: $grey;
+}
+
+.mat-menu-content {
+  padding: .5rem;
+}

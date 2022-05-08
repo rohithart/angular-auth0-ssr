@@ -1,0 +1,10 @@
+@import "src/app/styles/mixins";
+
+p {
+  color: $primary--color;
+  font-size: 1.25rem;
+}
+
+.action-button {
+  margin-right: 1rem;
+}

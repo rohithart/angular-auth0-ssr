@@ -1,0 +1,105 @@
+<mat-toolbar class="nav-bar">
+  <div class="nav-left-container">
+    <div class="nav-left-containers">
+      <button mat-button [mat-menu-trigger-for]="menu" fxShow fxHide.gt-sm>
+        <mat-icon>menu</mat-icon>
+      </button>
+      <a routerLink="/"><img src="assets/images/logo.svg" class="pic"  alt="profile picture"></a>
+      <div class="header-message">
+        <a routerLink="/" class="app-name">Angular App</a>
+        <span *ngIf="authService.user | async as user" class="welcome-message">Hi {{ user.email }}!</span>
+      </div>
+    </div>
+
+    <div class="nav-left-containers" *ngIf="authService.user | async as user">
+      <form class="search-form" class="search-bar" (ngSubmit)="searchNow()">
+        <mat-form-field>
+          <input type="text" matInput placeholder="Search item..." [(ngModel)]="searchInput" [ngModelOptions]="{standalone: true}">
+          <span class="search-icon" matSuffix>
+            <i class="fas fa-search icon-search" (click)="searchNow()" aria-label="Search" matTooltip="Search" matTooltipPosition="above"></i>
+            <i class="fas fa-times icon-close" *ngIf="searchInput.length > 0" (click)="clearSearch()" aria-label="Clear" matTooltip="Clear" matTooltipPosition="above"></i>
+          </span>
+        </mat-form-field>
+      </form>
+    </div>
+  </div>
+
+	<span class="fill-remaining-space"></span>
+
+	<div fxLayout="row" fxHide fxShow.gt-sm>
+    <div *ngIf="authService.user | async as user">
+      <a mat-button class="menu-button" *ngFor="let item of menuItems" routerLink="{{item.link}}" matBadge="8" matBadgePosition="before" matBadgeColor="accent">
+        <i class="{{item.icon}}"></i> {{item.name}}
+        <div class="beta" *ngIf="item.beta">
+          <span class="beta-text">Beta</span>
+        </div>
+      </a>
+    </div>
+
+    <button mat-button *ngIf="authService.user | async as user" class="menu-button" [matMenuTriggerFor]="itemMenu"><i class="fas fa-pepper-hot"></i> Item <i class="fas fa-chevron-down"></i></button>
+    <mat-menu #itemMenu="matMenu">
+      <a mat-menu-item class="menu-item" *ngFor="let item of menuItemItems" routerLink="{{item.link}}" [queryParams]="item.params">
+        <i class="{{item.icon}}"></i> {{item.name}}
+      </a>
+    </mat-menu>
+
+    <button mat-button *ngIf="authService.user | async as user" class="menu-button" [matMenuTriggerFor]="starMenu"><i class="fas fa-star"></i> Default <i class="fas fa-chevron-down"></i></button>
+    <mat-menu #starMenu="matMenu">
+      <a mat-menu-item class="menu-item" *ngFor="let item of menuStarItems" routerLink="{{item.link}}">
+        <i class="{{item.icon}}"></i> {{item.name}}
+      </a>
+    </mat-menu>
+
+    <button mat-button *ngIf="authService.user | async as user" class="menu-button" [matMenuTriggerFor]="houseMenu"><i class="fas fa-home"></i> House <i class="fas fa-chevron-down"></i></button>
+    <mat-menu #houseMenu="matMenu">
+      <a mat-menu-item class="menu-item" *ngFor="let item of menuHouseItems" routerLink="{{item.link}}">
+        <i class="{{item.icon}}"></i> {{item.name}}
+      </a>
+    </mat-menu>
+
+    <button mat-button class="menu-button" [matMenuTriggerFor]="defaultMenu">Other <i class="fas fa-chevron-down"></i></button>
+    <mat-menu #defaultMenu="matMenu">
+      <a mat-menu-item class="menu-item" *ngFor="let item of menuItemsDefault" routerLink="{{item.link}}">
+        <i class="{{item.icon}}"></i> {{item.name}}
+      </a>
+    </mat-menu>
+		<ng-container *ngIf="authService.isAuthenticated | async; else loggedOut">
+			<a mat-button class="menu-button" (click)="authService.logout()">
+				<i class="fas fa-sign-out-alt"></i> Log out
+			</a>
+		</ng-container>
+
+		<ng-template #loggedOut>
+		<a mat-button class="menu-button" (click)="authService.login()">Log in</a>
+		</ng-template>
+	</div>
+</mat-toolbar>
+
+<mat-menu x-position="before" #menu>
+  <div *ngIf="authService.user | async as user">
+    <a mat-menu-item class="menu-item" *ngFor="let item of menuItems" routerLink="{{item.link}}">
+      <i class="{{item.icon}}"></i> {{item.name}}
+    </a>
+    <a mat-menu-item class="menu-item" *ngFor="let item of menuItemItems" routerLink="{{item.link}}">
+      <i class="{{item.icon}}"></i> {{item.name}}
+    </a>
+    <a mat-menu-item class="menu-item" *ngFor="let item of menuStarItems" routerLink="{{item.link}}">
+      <i class="{{item.icon}}"></i> {{item.name}}
+    </a>
+    <a mat-menu-item class="menu-item" *ngFor="let item of menuHouseItems" routerLink="{{item.link}}">
+      <i class="{{item.icon}}"></i> {{item.name}}
+    </a>
+  </div>
+  <a mat-menu-item class="menu-item" *ngFor="let item of menuItemsDefault" routerLink="{{item.link}}">
+		<i class="{{item.icon}}"></i> {{item.name}}
+	</a>
+	<ng-container *ngIf="authService.isAuthenticated | async; else loggedOut">
+		<a mat-button class="menu-item" (click)="authService.logout()">
+			<i class="fas fa-sign-out-alt"></i> Log out
+		</a>
+	</ng-container>
+
+	<ng-template #loggedOut>
+	<a mat-button class="menu-button" (click)="authService.login()">Log in</a>
+	</ng-template>
+</mat-menu>

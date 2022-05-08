@@ -1,0 +1,6 @@
+@import "src/app/styles/colors";
+
+@function calculateRem($size) {
+    $remSize: calc($size / 16px);
+    @return $remSize * 1rem;
+}
