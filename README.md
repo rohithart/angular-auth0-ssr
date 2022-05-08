@@ -1,10 +1,7 @@
-# Grocery
+# Angular Auth0 SSR
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 12.2.6.
 
-## Deployment
-
-[![Netlify Status](https://api.netlify.com/api/v1/badges/f8e94d5a-f4c7-4537-82a5-414b827950f9/deploy-status)](https://app.netlify.com/sites/rohith-grocery/deploys)
 
 ## Development server
 
