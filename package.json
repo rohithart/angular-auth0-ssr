@@ -1,5 +1,5 @@
 {
-  "name": "grocery",
+  "name": "angular-app",
   "version": "1.0.0",
   "scripts": {
     "ng": "ng",
@@ -8,10 +8,10 @@
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
-    "dev:ssr": "ng run grocery:serve-ssr",
-    "serve:ssr": "node dist/grocery/server/main.js",
-    "build:ssr": "ng build && ng run grocery:server",
-    "prerender": "ng run grocery:prerender"
+    "dev:ssr": "ng run angular-app:serve-ssr",
+    "serve:ssr": "node dist/angular-app/server/main.js",
+    "build:ssr": "ng build && ng run angular-app:server",
+    "prerender": "ng run angular-app:prerender"
   },
   "private": true,
   "dependencies": {

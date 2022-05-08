@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "grocery": {
+    "angular-app": {
       "projectType": "application",
       "schematics": {
         "@schematics/angular:component": {
@@ -20,7 +20,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/grocery/browser",
+            "outputPath": "dist/angular-app/browser",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": "src/polyfills.ts",
@@ -80,15 +80,15 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "grocery:build",
+            "browserTarget": "angular-app:build",
             "proxyConfig": "src/proxy.conf.json"
           },
           "configurations": {
             "production": {
-              "browserTarget": "grocery:build:production"
+              "browserTarget": "angular-app:build:production"
             },
             "development": {
-              "browserTarget": "grocery:build:development"
+              "browserTarget": "angular-app:build:development"
             }
           },
           "defaultConfiguration": "development"
@@ -96,7 +96,7 @@
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "grocery:build"
+            "browserTarget": "angular-app:build"
           }
         },
         "test": {
@@ -132,7 +132,7 @@
         "server": {
           "builder": "@angular-devkit/build-angular:server",
           "options": {
-            "outputPath": "dist/grocery/server",
+            "outputPath": "dist/angular-app/server",
             "main": "server.ts",
             "tsConfig": "tsconfig.server.json",
             "inlineStyleLanguage": "scss"
@@ -159,12 +159,12 @@
           "builder": "@nguniversal/builders:ssr-dev-server",
           "configurations": {
             "development": {
-              "browserTarget": "grocery:build:development",
-              "serverTarget": "grocery:server:development"
+              "browserTarget": "angular-app:build:development",
+              "serverTarget": "angular-app:server:development"
             },
             "production": {
-              "browserTarget": "grocery:build:production",
-              "serverTarget": "grocery:server:production"
+              "browserTarget": "angular-app:build:production",
+              "serverTarget": "angular-app:server:production"
             }
           },
           "defaultConfiguration": "development"
@@ -178,12 +178,12 @@
           },
           "configurations": {
             "production": {
-              "browserTarget": "grocery:build:production",
-              "serverTarget": "grocery:server:production"
+              "browserTarget": "angular-app:build:production",
+              "serverTarget": "angular-app:server:production"
             },
             "development": {
-              "browserTarget": "grocery:build:development",
-              "serverTarget": "grocery:server:development"
+              "browserTarget": "angular-app:build:development",
+              "serverTarget": "angular-app:server:development"
             }
           },
           "defaultConfiguration": "production"
@@ -191,7 +191,7 @@
       }
     }
   },
-  "defaultProject": "grocery",
+  "defaultProject": "angular-app",
   "cli": {
     "analytics": false,
     "defaultCollection": "@angular-eslint/schematics"
