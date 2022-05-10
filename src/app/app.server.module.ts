@@ -4,7 +4,7 @@ import { ServerModule } from '@angular/platform-server';
 import { AppModule } from './app.module';
 import { AppComponent } from './app.component';
 import { AuthServerService } from './auth.server.service';
-import { AuthService } from '@auth0/auth0-angular';
+import { Auth0AuthService } from './services/auth.service';
 
 @NgModule({
   imports: [
@@ -12,7 +12,7 @@ import { AuthService } from '@auth0/auth0-angular';
     ServerModule,
   ],
   providers: [{
-    provide: AuthService,
+    provide: Auth0AuthService,
     useClass: AuthServerService,
   }],
   bootstrap: [AppComponent],
